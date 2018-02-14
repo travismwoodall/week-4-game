@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crystal Collector</title>
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css\style.css">
+    <!--  Built the page before putting in the reset, don't have time to fix now <link rel="stylesheet" type="text/css" href="assets\css\reset.css\reset.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+    <scipt src="assets\javascript\script.js"></scipt>
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>Crystal Collector</h1>
+    <div class="wrapper">
+        <div class="instructions">
+            <p>You will be given a random number at the start of the game.</p>
+            <p>There are four crystals below. Each crystal has a hidden value, when clicked, it will be added to your total.</p>
+            <p>You win the game by matching your total score to the randomly selected number, you lose the game if your total
+                goes above this number.</p>
+            <p>Each time the game starts the values of the crystals will change.</p>
+        </div>
+
+        <div class="game">
+            <p id="game-text">GAME</p>
+        </div>
+
+        <div class="random-number">
+            <p id="goal">Random Number</p>
+        </div>
+
+        <div class="wins-losses">
+            <p id="wins">Wins:</p>
+            <p id="losses">Losses:</p>
+        </div>
+
+        <div class="crystals">
+            <img class="red" id="redcrys" src="assets\images\red crystal.jpg" alt="Red crystals.">
+            <img class="purple" id="purplecrys" src="assets\images\purple crystal.jpg"
+                alt="Purple crystals.">
+            <img class="white" id="whitecrys" src="assets\images\yellow crystal.jpg"
+                alt="White crystals.">
+            <img class="green" id="greencrys" src="assets\images\green crystal.jpg"
+                alt="Green crystals.">
+        </div>
+
+        <div class="userinfo">
+            <p class=fixed>Your total score is:</p>
+            <p class=user-score id="us">0</p>
+        </div>
+
+        
+        <div class="tally-space">
+        <p id="winner">0000000</p>
+        <p id="loser">0000000</p>
+        </div>
+
+    </div>
+    <script>
+
+    //For some reason I couldn't get a relative path to work for the javascript file 
+    
+        $(document).ready(function(){
+    var randNumber = Math.floor(Math.random() * 101) + 19;
+    var total = 0;
+    var wins = 0;
+    var losses = 0;
+
+    
+   $("#winner").html(wins);
+   $("#loser").html(losses);
+    
+
+    var red = Math.floor(Math.random() * 11) + 1;
+    var purple = Math.floor(Math.random() * 11) + 1;
+    var white = Math.floor(Math.random() * 11) + 1;
+    var green = Math.floor(Math.random() * 11) + 1;
+
+   $("#goal").html(randNumber);
+   $("#us").html(total);
+
+   document.getElementById('redcrys').onclick = function() {
+      total = red + total;
+      $("#us").html(total);
+      if (total === randNumber){
+            wins++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#winner").html(wins++);
+            total = 0;
+            $("#us").html(total);
+        }
+        if (total > randNumber){
+            losses++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#loser").html(losses++);
+            total = 0;
+            $("#us").html(total);
+        }
+    };
+
+    document.getElementById('purplecrys').onclick = function() {
+        total = purple + total;
+        $("#us").html(total);
+        if (total === randNumber){
+            wins++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#winner").html(wins++);
+            total = 0;
+            $("#us").html(total);
+        }
+        if (total > randNumber){
+            losses++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#loser").html(losses++);
+            total = 0;
+            $("#us").html(total);
+        }
+    };
+
+
+    document.getElementById('whitecrys').onclick = function() {
+        total = white + total;
+        $("#us").html(total);
+        if (total === randNumber){
+            wins++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#winner").html(wins++);
+            total = 0;
+            $("#us").html(total);
+        }
+        if (total > randNumber){
+            losses++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#loser").html(losses++);
+            total = 0;
+            $("#us").html(total);
+        }
+    };
+
+    document.getElementById('greencrys').onclick = function () {
+        total = purple + total;
+        $("#us").html(total);
+        if (total === randNumber){
+            wins++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#winner").html(wins++);
+            total = 0;
+            $("#us").html(total);
+        }
+        if (total > randNumber){
+            losses++;
+            randNumber = Math.floor(Math.random() * 101) + 19;
+            $("#goal").html(randNumber);
+            $("#loser").html(losses++);
+            total = 0;
+            $("#us").html(total);
+        }
+    };
+});
+    </script>
+</body>
+
+</html>
